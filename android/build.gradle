@@ -9,6 +9,8 @@ buildscript {
         //classpath 'com.android.tools.build:gradle:7.1.2' 원래
         classpath 'com.android.tools.build:gradle:7.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.0.1'
+        classpath 'com.google.android.gms:play-services-maps:17.0.0'
     }
 }
 
@@ -30,4 +32,3 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-

@@ -5,5 +5,5 @@
          to allow setting breakpoints, to provide hot reload, etc.
          android:largeHeap="true"
     -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    
 </manifest>
