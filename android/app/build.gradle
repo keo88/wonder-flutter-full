@@ -28,11 +28,9 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    //compileSdkVersion 33
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
     ndkVersion flutter.ndkVersion
-    // compileSdkVersion flutter.compileSdkVersion
-    // ndkVersion flutter.ndkVersion
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -52,15 +50,12 @@ android {
         applicationId "com.kugods.wonder_flutter"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        //minSdkVersion 20
-        minSdkVersion 30
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
-        //versionCode flutterVersionCode.toInteger()
-        //ersionName flutterVersionName
-        versionCode 1
-        versionName "1.0"
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+
         manifestPlaceholders["googleMapApiKey"] = googleMapApiKey
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -79,18 +74,3 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
-configurations.all {
-    // in below line we are adding strategy for each dependency and requesting the details 
-    resolutionStrategy.eachDependency {DependencyResolveDetails details ->
-        // on below line we are getting to see the details using requested. 
-        def requested = details.requested
-        // in below line we are requesting a group. 
-        if (requested.group == 'com.android.support'){
-            // on below line we are checking if the request is a group and checking if it starts with com.android.support.
-            if(!requested.name.startsWith("multidex")){
-                // if the requested name starts with multi dex then we are displaying the use version which is given below. 
-                details.useVersion '25.3.0'
-            }
-        }
-    }
-} 
